@@ -2,7 +2,7 @@
 
 namespace Lib\Authentication;
 
-use App\Models\User;
+use App\Models\Worker;
 
 class Auth
 {
@@ -11,11 +11,11 @@ class Auth
         $_SESSION['user']['id'] = $user->id;
     }
 
-    public static function user(): ?User
+    public static function user(): ?Worker
     {
         if (isset($_SESSION['user']['id'])) {
             $id = $_SESSION['user']['id'];
-            return User::findById($id);
+            return Worker::findById($id);
         }
 
         return null;

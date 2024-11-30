@@ -16,16 +16,6 @@ class Validations
         return true;
     }
 
-    public static function passwordConfirmation($obj)
-    {
-        if ($obj->password !== $obj->password_confirmation) {
-            $obj->addError('password', 'as senhas devem ser idênticas!');
-            return false;
-        }
-
-        return true;
-    }
-
     public static function uniqueness($fields, $object)
     {
         if (!is_array($fields)) {
