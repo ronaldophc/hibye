@@ -12,7 +12,7 @@ class WorkersPopulate
       'name' => 'Fulano',
       'cpf' => '09631697932',
       'email' => 'fulano@gmail.com',
-      'password' => '123456',
+      'password' => '123',
       'daily_hours' => 8,
     ];
 

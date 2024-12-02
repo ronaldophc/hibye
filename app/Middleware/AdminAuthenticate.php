@@ -6,12 +6,12 @@ use Core\Http\Middleware\Middleware;
 use Core\Http\Request;
 use Lib\Authentication\Auth;
 
-class Authenticate implements Middleware
+class AdminAuthenticate implements Middleware
 {
     public function handle(Request $request): void
     {
-        if (!Auth::check('user')) {
-            $this->redirectTo(route('users.login'));
+        if (!Auth::check('admin')) {
+            $this->redirectTo(route('admins.login'));
         }
     }
 

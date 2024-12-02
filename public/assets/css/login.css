@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .login {
   height: 100vh;
   display: flex;
@@ -22,4 +26,8 @@
 
 .form-login .btn {
   background-color: #415A77;
+}
+
+.form-login .btn:hover {
+  background-color: #1B263B;
 }

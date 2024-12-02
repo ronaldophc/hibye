@@ -22,4 +22,13 @@ CREATE TABLE workers
   password VARCHAR(255) NOT NULL
 );
 
+DROP TABLE IF EXISTS admins;
+
+CREATE TABLE admins
+(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
 SET foreign_key_checks = 1;
