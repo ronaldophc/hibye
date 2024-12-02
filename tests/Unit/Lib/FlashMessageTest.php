@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\Unit\Lib;
 
 use Lib\FlashMessage;

@@ -42,5 +42,4 @@ class AuthTest extends TestCase
 
         $this->assertFalse(Auth::check('user'));
     }
-
 }
