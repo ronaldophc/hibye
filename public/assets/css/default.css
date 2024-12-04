@@ -1,0 +1,36 @@
+/* ------------------------------------- Flash Message ------------------------------------- */
+.flash-message-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1050;
+}
+
+.flash-message {
+    margin-bottom: 10px;
+    animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ------------------------------------- Navbar ------------------------------------- */
+
+.navbar {
+    background-color: #1B263B;
+}
+
+.navbar .nav-link {
+    color: #E0E1DD;
+}
+
+.navbar .nav-link:hover {
+    color: #FFC857;
+}
+
+a {
+    text-decoration: none;
+}

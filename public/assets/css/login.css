@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E0E1DD;
+}
+
+.form-login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-login .form-control {
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.form-login .btn {
+  background-color: #415A77;
+}
+
+.form-login .btn:hover {
+  background-color: #1B263B;
+}
