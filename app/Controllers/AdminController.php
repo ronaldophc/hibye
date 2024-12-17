@@ -12,4 +12,9 @@ class AdminController extends Controller
     {
         $this->render('admin/index');
     }
+
+    public function users(): void
+    {
+        $this->render('admin/users/index');
+    }
 }

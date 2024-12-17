@@ -19,4 +19,5 @@ Route::middleware('auth')->group(function () {
 Route::middleware('admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admins.root');
     Route::get('/admin/logout', [AuthController::class, 'adminDestroy'])->name('admins.logout');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admins.users');
 });
