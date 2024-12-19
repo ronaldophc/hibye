@@ -10,21 +10,21 @@ class Controller
 {
     protected string $layout = 'application';
 
-    // protected ?Worker $current_user = null;
+//     protected ?Worker $current_user = null;
 
-    // public function __construct()
-    // {
-    //     $this->current_user = Auth::user();
-    // }
-
-    // public function currentUser(): ?Worker
-    // {
-    //     if ($this->current_user === null) {
-    //         $this->current_user = Auth::user();
-    //     }
-
-    //     return $this->current_user;
-    // }
+//     public function __construct()
+//     {
+//         $this->current_user = Auth::user('user');
+//     }
+//
+//     public function currentUser(): ?Worker
+//     {
+//         if ($this->current_user === null) {
+//             $this->current_user = Auth::user('user');
+//         }
+//
+//         return $this->current_user;
+//     }
 
     /**
      * @param array<string, mixed> $data

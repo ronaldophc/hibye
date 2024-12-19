@@ -1,0 +1,19 @@
+<?php require __DIR__ . '/../navbar.phtml' ?>
+<div class="text-center">
+    <h1 class="fs-1 fw-bold py-5 mb-5 title">Editar Administrador</h1>
+    <div class="col-md-2 mx-auto">
+
+        <form method="POST" action="<?= route('admins.update', ['id' => $admin->id]) ?>" class="mb-4">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="Digite o email" value="<?= $admin->email ?>" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Nova Senha</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+            </div>
+            <button type="submit" class="btn btn-success">Atualizar</button>
+        </form>
+    </div>
+</div>
