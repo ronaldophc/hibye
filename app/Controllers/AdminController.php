@@ -46,10 +46,11 @@ class AdminController extends Controller
         if ($admin->save()) {
             FlashMessage::success('Admin registrado com sucesso!');
             $this->redirectTo(route('admins.admins'));
-        } else {
-            FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
-            $this->redirectTo(route('admins.create'));
+            return;
         }
+
+        FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
+        $this->redirectTo(route('admins.create'));
     }
 
     public function edit(Request $request): void
@@ -88,10 +89,11 @@ class AdminController extends Controller
         if ($admin->update(['password' => $password])) {
             FlashMessage::success('Admin atualizado com sucesso!');
             $this->redirectTo(route('admins.admins'));
-        } else {
-            FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
-            $this->redirectTo(route('admins.edit', ['id' => $id]));
-        }
+            return;
+        } 
+        
+        FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
+        $this->redirectTo(route('admins.edit', ['id' => $id]));
     }
 
     public function destroy(Request $request): void
