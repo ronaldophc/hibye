@@ -90,8 +90,8 @@ class AdminController extends Controller
             FlashMessage::success('Admin atualizado com sucesso!');
             $this->redirectTo(route('admins.admins'));
             return;
-        } 
-        
+        }
+
         FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
         $this->redirectTo(route('admins.edit', ['id' => $id]));
     }
