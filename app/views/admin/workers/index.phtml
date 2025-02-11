@@ -1,0 +1,81 @@
+<?php require __DIR__ . '/../navbar.phtml' ?>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Gerenciar Funcionários</h1>
+
+    <!-- Formulário para Adicionar/Editar Funcionários -->
+    <form method="POST" action="/admin/save.php" class="mb-4">
+        <input type="hidden" name="id" value=""> <!-- Campo escondido para edição -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome do Funcionário</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Digite o nome" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Endereço</label>
+            <input type="text" name="address" id="address" class="form-control" placeholder="Digite o endereço" required>
+        </div>
+        <div class="mb-3">
+            <label for="sex" class="form-label">Sexo</label>
+            <select name="sex" id="sex" class="form-control" required>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="daily_hours" class="form-label">Carga Horária</label>
+            <input type="number" name="daily_hours" id="daily_hours" class="form-control" placeholder="Carga horária" required>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+
+    <!-- Lista de Funcionários -->
+    <h2 class="mb-3">Lista de Funcionários</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Sexo</th>
+                <th>Carga Horária</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Exemplo de dados. Substitua com dados do banco de dados.
+            $employees = [
+                ['id' => 1, 'name' => 'João Silva', 'address' => 'Rua A, 123', 'sex' => 'M', 'daily_hours' => 8],
+                ['id' => 2, 'name' => 'Maria Oliveira', 'address' => 'Rua B, 456', 'sex' => 'F', 'daily_hours' => 6],
+            ];
+
+            foreach ($employees as $employee) {
+                echo "<tr>
+                    <td>{$employee['id']}</td>
+                    <td>{$employee['name']}</td>
+                    <td>{$employee['address']}</td>
+                    <td>{$employee['sex']}</td>
+                    <td>{$employee['daily_hours']}</td>
+                    <td>
+                        <a href='/admin/edit.php?id={$employee['id']}' class='btn btn-warning btn-sm'>
+                            <i class='bi bi-pencil-square'></i> Editar
+                        </a>
+                        <a href='/admin/delete.php?id={$employee['id']}' class='btn btn-danger btn-sm'>
+                            <i class='bi bi-trash'></i> Excluir
+                        </a>
+                    </td>
+                </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+
+    <!-- Paginação -->
+    <div class="pagination">
+        <a href="#">Anterior</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Próximo</a>
+    </div>
+</div>

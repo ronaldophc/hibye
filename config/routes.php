@@ -3,6 +3,8 @@
 use App\Controllers\AdminController;
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
+use App\Controllers\WorkerController;
+use App\Models\Worker;
 use Core\Router\Route;
 
 // Funcionario login
@@ -30,6 +32,7 @@ Route::middleware('admin')->group(function () {
 
     // Retrieve
     Route::get('/admin/admins', [AdminController::class, 'admins'])->name('admins.admins');
+    Route::get('/admin/workers', [WorkerController::class, 'workers'])->name('workers.workers');
     Route::get('/admin/admins/page/{page}', [AdminController::class, 'admins'])->name('admins.paginate');
 
     // Create
