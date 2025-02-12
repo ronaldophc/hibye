@@ -1,72 +1,49 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
 
+<h1 class="text-center fs-1 fw-bold py-5 mb-5 title">Gerenciar Funcionários</h1>
+
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Gerenciar Funcionários</h1>
 
-    <!-- Formulário para Adicionar/Editar Funcionários -->
-    <form method="POST" action="/admin/save.php" class="mb-4">
-        <input type="hidden" name="id" value=""> <!-- Campo escondido para edição -->
-        <div class="mb-3">
-            <label for="name" class="form-label">Nome do Funcionário</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Digite o nome" required>
-        </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Endereço</label>
-            <input type="text" name="address" id="address" class="form-control" placeholder="Digite o endereço" required>
-        </div>
-        <div class="mb-3">
-            <label for="sex" class="form-label">Sexo</label>
-            <select name="sex" id="sex" class="form-control" required>
-                <option value="M">Masculino</option>
-                <option value="F">Feminino</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="daily_hours" class="form-label">Carga Horária</label>
-            <input type="number" name="daily_hours" id="daily_hours" class="form-control" placeholder="Carga horária" required>
-        </div>
-        <button type="submit" class="btn btn-success">Salvar</button>
-    </form>
+    <a class="btn btn-success mb-2" href="#">Criar</a>
 
-    <!-- Lista de Funcionários -->
-    <h2 class="mb-3">Lista de Funcionários</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
                 <th>Endereço</th>
                 <th>Sexo</th>
                 <th>Carga Horária</th>
+                <th>Telefone</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-            // Exemplo de dados. Substitua com dados do banco de dados.
-            $employees = [
-                ['id' => 1, 'name' => 'João Silva', 'address' => 'Rua A, 123', 'sex' => 'M', 'daily_hours' => 8],
-                ['id' => 2, 'name' => 'Maria Oliveira', 'address' => 'Rua B, 456', 'sex' => 'F', 'daily_hours' => 6],
-            ];
-
-            foreach ($employees as $employee) {
-                echo "<tr>
-                    <td>{$employee['id']}</td>
-                    <td>{$employee['name']}</td>
-                    <td>{$employee['address']}</td>
-                    <td>{$employee['sex']}</td>
-                    <td>{$employee['daily_hours']}</td>
+            <?php foreach ($workers as $worker) : ?>
+                <tr>
+                    <td><?= $worker->name ?></td>
+                    <td><?= $worker->cpf ?></td>
+                    <td><?= $worker->email ?></td>
+                    <td><?= $worker->address ?></td>
+                    <td><?= $worker->sex ?></td>
+                    <td><?= $worker->daily_hours ?></td>
+                    <td><?= $worker->phone ?></td>
                     <td>
-                        <a href='/admin/edit.php?id={$employee['id']}' class='btn btn-warning btn-sm'>
-                            <i class='bi bi-pencil-square'></i> Editar
-                        </a>
-                        <a href='/admin/delete.php?id={$employee['id']}' class='btn btn-danger btn-sm'>
-                            <i class='bi bi-trash'></i> Excluir
-                        </a>
+                        <div class="d-flex flex-row">
+                            <a href="<?= route('admins.edit', ['id' => $worker->id]) ?>" class='btn btn-warning btn-sm mx-2'>
+                                <i class='bi bi-pencil-square'></i> Editar
+                            </a>
+                            <form action="<?= route('admins.destroy', ['id' => $worker->id]) ?>" method="POST" class="m-0">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class='btn btn-danger btn-sm'>
+                                    <i class='bi bi-trash'></i> Excluir
+                                </button>
+                            </form>
+                        </div>
                     </td>
-                </tr>";
-            }
-            ?>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 
