@@ -23,4 +23,26 @@ class WorkerController extends Controller
     {
         $this->render('admin/workers/create');
     }
+
+    public function store(Request $request): void
+    {
+        $worker = new Worker($request->getParams()['worker']);
+
+        if (!$worker->isValid()) {
+            FlashMessage::danger('Dados incompletos! Verifique!');
+            $errors = $worker->errors;
+            $_SESSION['errors'] = $errors;
+            $this->redirectTo(route('workers.create'));
+            return;
+        }
+
+        if ($worker->save()) {
+            FlashMessage::success('Funcionário registrado com sucesso!');
+            $this->redirectTo(route('admins.workers'));
+            return;
+        }
+
+        FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
+        $this->redirectTo(route('workers.create'));
+    }
 }

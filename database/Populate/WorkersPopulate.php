@@ -14,6 +14,7 @@ class WorkersPopulate
       'email' => 'fulano@gmail.com',
       'password' => '123',
       'daily_hours' => 8,
+      'position_id' => 1,
     ];
 
     $worker = new Worker($data);

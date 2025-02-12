@@ -9,7 +9,7 @@ class Validations
     public static function notEmpty($attribute, $obj)
     {
         if ($obj->$attribute === null || $obj->$attribute === '') {
-            $obj->addError($attribute, 'não pode ser vazio!');
+            $obj->addError($attribute, 'Não pode ser vazio!');
             return false;
         }
 
@@ -40,7 +40,7 @@ class Validations
 
         if ($stmt->rowCount() !== 0) {
             foreach ($fields as $field) {
-                $object->addError($field, 'já existe um registro com esse dado');
+                $object->addError($field, 'Já registrado!');
             }
             return false;
         }

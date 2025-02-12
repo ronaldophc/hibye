@@ -22,6 +22,8 @@ class AuthController extends Controller
     {
         $params = $request->getParam('user');
         $user = Worker::findByEmail($params['email']);
+        dd($user->position());
+
 
         if (!$user || !$user->authenticate($params['password'])) {
             FlashMessage::danger('Email e/ou senha inválidos!');

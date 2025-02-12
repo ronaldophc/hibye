@@ -1,40 +1,70 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
+
+<?php $errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+?>
+
 <div class="text-center">
     <h1 class="fs-1 fw-bold py-5 mb-5 title">Criar Administrador</h1>
     <div class="col-md-2 mx-auto page-create">
 
-        <form method="POST" action="<?= route('admins.create') ?>" class="mb-4 form-control">
+        <form method="POST" action="<?= route('workers.store') ?>" class="mb-4 form-control">
+            <input type="hidden" value="1" name="worker[position_id]"/>
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
                 <input type="text" name="worker[name]" id="name" class="form-control" placeholder="Digite o nome">
+                <?php if (array_key_exists('name', $errors)): ?>
+                    <div class="text-danger"><?= $errors['name'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
                 <input type="cpf" name="worker[cpf]" id="cpf" class="form-control" placeholder="Digite o CPF">
+                <?php if (array_key_exists('cpf', $errors)): ?>
+                    <div class="text-danger"><?= $errors['cpf'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Endereço</label>
                 <input type="text" name="worker[address]" id="address" class="form-control" placeholder="Digite o endereço">
+                <?php if (array_key_exists('address', $errors)): ?>
+                    <div class="text-danger"><?= $errors['address'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" name="worker[email]" id="email" class="form-control" placeholder="Digite o email">
+                <?php if (array_key_exists('email', $errors)): ?>
+                    <div class="text-danger"><?= $errors['email'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="sex" class="form-label">Sexo</label>
                 <input type="text" name="worker[sex]" id="sex" class="form-control" placeholder="Digite o sexo">
+                <?php if (array_key_exists('sex', $errors)): ?>
+                    <div class="text-danger"><?= $errors['sex'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="daily_hours" class="form-label">Carga horária</label>
                 <input type="text" name="worker[daily_hours]" id="daily_hours" class="form-control" placeholder="Digite a carga horária">
+                <?php if (array_key_exists('daily_hours', $errors)): ?>
+                    <div class="text-danger"><?= $errors['daily_hours'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Telefone</label>
                 <input type="text" name="worker[phone]" id="phone" class="form-control" placeholder="Digite o telefone">
+                <?php if (array_key_exists('phone', $errors)): ?>
+                    <div class="text-danger"><?= $errors['phone'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Senha</label>
                 <input type="text" name="worker[password]" id="password" class="form-control" placeholder="Digite a senha">
+                <?php if (array_key_exists('password', $errors)): ?>
+                    <div class="text-danger"><?= $errors['password'] ?></div>
+                <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-success">Criar</button>
         </form>

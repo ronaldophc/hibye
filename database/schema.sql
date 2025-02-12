@@ -19,7 +19,8 @@ CREATE TABLE workers
   sex VARCHAR(15),
   daily_hours INT NOT NULL,
   phone VARCHAR(20),
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  position_id INT DEFAULT 1 NOT NULL REFERENCES positions(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS admins;
