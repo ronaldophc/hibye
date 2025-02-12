@@ -1,14 +1,13 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
-<div class="text-center">
-    <h1 class="fs-1 fw-bold py-5 mb-5 title">Criar Administrador</h1>
-    <div class="col-md-2 mx-auto page-create">
-
-        <form method="POST" action="<?= route('admins.store') ?>" class="mb-4 form-control">
-            <div class="mb-3">
+<div class="text-center mb-5">
+    <h1 class="fs-2 title">Criar Administrador</h1>
+    <div class="container page-create">
+        <form method="POST" action="<?= route('admins.store') ?>" class="mb-0">
+            <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" name="email" id="email" class="form-control" placeholder="Digite o email">
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="password" class="form-label">Senha</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
             </div>
