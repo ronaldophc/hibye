@@ -1,9 +1,9 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
 <div class="text-center">
     <h1 class="fs-1 fw-bold py-5 mb-5 title">Criar Administrador</h1>
-    <div class="col-md-2 mx-auto">
+    <div class="col-md-2 mx-auto page-create">
 
-        <form method="POST" action="<?= route('admins.create') ?>" class="mb-4">
+        <form method="POST" action="<?= route('admins.create') ?>" class="mb-4 form-control">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" name="email" id="email" class="form-control" placeholder="Digite o email">
@@ -16,4 +16,3 @@
         </form>
     </div>
 </div>
-

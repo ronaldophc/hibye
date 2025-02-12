@@ -1,16 +1,40 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
 <div class="text-center">
     <h1 class="fs-1 fw-bold py-5 mb-5 title">Criar Administrador</h1>
-    <div class="col-md-2 mx-auto">
+    <div class="col-md-2 mx-auto page-create">
 
-        <form method="POST" action="<?= route('admins.create') ?>" class="mb-4">
+        <form method="POST" action="<?= route('admins.create') ?>" class="mb-4 form-control">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" name="worker[name]" id="name" class="form-control" placeholder="Digite o nome">
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="cpf" name="worker[cpf]" id="cpf" class="form-control" placeholder="Digite o CPF">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Endereço</label>
+                <input type="text" name="worker[address]" id="address" class="form-control" placeholder="Digite o endereço">
+            </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="Digite o email">
+                <input type="text" name="worker[email]" id="email" class="form-control" placeholder="Digite o email">
+            </div>
+            <div class="mb-3">
+                <label for="sex" class="form-label">Sexo</label>
+                <input type="text" name="worker[sex]" id="sex" class="form-control" placeholder="Digite o sexo">
+            </div>
+            <div class="mb-3">
+                <label for="daily_hours" class="form-label">Carga horária</label>
+                <input type="text" name="worker[daily_hours]" id="daily_hours" class="form-control" placeholder="Digite a carga horária">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Telefone</label>
+                <input type="text" name="worker[phone]" id="phone" class="form-control" placeholder="Digite o telefone">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Senha</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+                <input type="text" name="worker[password]" id="password" class="form-control" placeholder="Digite a senha">
             </div>
             <button type="submit" class="btn btn-success">Criar</button>
         </form>
