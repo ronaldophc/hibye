@@ -38,6 +38,7 @@ Route::middleware('admin')->group(function () {
     // Create
     Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admins.create');
     Route::post('/admin/admins/create', [AdminController::class, 'store'])->name('admins.store');
+    Route::get('/admin/workers/create', [WorkerController::class, 'create'])->name('workers.create');
 
     // Update
     Route::get('/admin/admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.edit');

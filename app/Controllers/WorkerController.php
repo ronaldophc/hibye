@@ -18,4 +18,9 @@ class WorkerController extends Controller
         $workers = $paginator->registers();
         $this->render('admin/workers/index', compact('workers', 'paginator'));
     }
+
+    public function create(): void
+    {
+        $this->render('admin/workers/create');
+    }
 }
