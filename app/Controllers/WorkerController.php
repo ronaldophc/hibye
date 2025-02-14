@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Admin;
+use App\Models\Position;
 use App\Models\Worker;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
@@ -19,9 +20,10 @@ class WorkerController extends Controller
         $this->render('admin/workers/index', compact('workers', 'paginator'));
     }
 
-    public function create(): void
+    public function create(Request $request): void
     {
-        $this->render('admin/workers/create');
+        $positions = Position::all();
+        $this->render('admin/workers/create', compact('positions'));
     }
 
     public function store(Request $request): void

@@ -57,8 +57,9 @@ unset($_SESSION['errors']);
                     <label for="position_id" class="form-label">Cargo</label>
                     <select name="worker[position_id]" class="form-control" id="position_id">
                         <option value="">Selecione</option>
-                        <option value="1">Gerente</option>
-                        <option value="2">Supervisor</option>
+                        <?php foreach($positions as $position) : ?>
+                            <option value="<?= $position->id ?>"><?= $position->name ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <?php if (array_key_exists('position_id', $errors)): ?>
                         <div class="text-danger"><?= $errors['position_id'] ?></div>

@@ -34,3 +34,17 @@
 a {
     text-decoration: none;
 }
+
+.back {
+    color: black;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.back:hover {
+    background-color: #f9f9f9;
+}

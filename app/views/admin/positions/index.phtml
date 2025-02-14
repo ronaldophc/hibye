@@ -1,0 +1,42 @@
+<?php require __DIR__ . '/../navbar.phtml' ?>
+
+<h1 class="text-center fs-2 title">Gerenciar Cargos</h1>
+
+<a href="<?= route("admins.workers") ?>" class="fs-5 back"><i class="bi bi-arrow-left"></i>Voltar</a>
+
+<div class="container mt-3">
+
+    <form method="POST" action="<?= route("positions.store") ?>" class="mb-4">
+        <input type="hidden" name="id" value="">
+        <div class="mb-3 col-3">
+            <label for="name" class="form-label">Nome do cargo</label>
+            <input type="text" name="position[name]" id="name" class="form-control" placeholder="Digite o nome" required>
+        </div>
+        <button type="submit" class="btn btn-success">Criar</button>
+    </form>
+
+    <h2 class="mb-3">Lista de cargos</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($positions as $position) : ?>
+                <tr>
+                    <td><?= $position->name ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <a href="#">Anterior</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Próximo</a>
+    </div>
+</div>

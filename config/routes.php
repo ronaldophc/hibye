@@ -3,8 +3,8 @@
 use App\Controllers\AdminController;
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
+use App\Controllers\PositionController;
 use App\Controllers\WorkerController;
-use App\Models\Worker;
 use Core\Router\Route;
 
 // Funcionario login
@@ -33,6 +33,7 @@ Route::middleware('admin')->group(function () {
     // Retrieve
     Route::get('/admin/admins', [AdminController::class, 'admins'])->name('admins.admins');
     Route::get('/admin/workers', [WorkerController::class, 'workers'])->name('admins.workers');
+    Route::get('/admin/positions', [PositionController::class, 'positions'])->name('admins.positions');
     Route::get('/admin/admins/page/{page}', [AdminController::class, 'admins'])->name('admins.paginate');
 
     // Create
@@ -40,6 +41,7 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/admins/create', [AdminController::class, 'store'])->name('admins.store');
     Route::get('/admin/workers/create', [WorkerController::class, 'create'])->name('workers.create');
     Route::post('/admin/workers/create', [WorkerController::class, 'store'])->name('workers.store');
+    Route::post('/admin/positions/create', [PositionController::class, 'store'])->name('positions.store');
 
     // Update
     Route::get('/admin/admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.edit');

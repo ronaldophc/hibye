@@ -37,3 +37,10 @@
 .page-create .btn-success:hover {
     background-color: #218838;
 }
+
+.workers {
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+}

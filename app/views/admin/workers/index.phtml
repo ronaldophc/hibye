@@ -2,9 +2,13 @@
 
 <h1 class="text-center fs-2 title">Gerenciar Funcionários</h1>
 
-<div class="container mt-5">
+<div class="container mt-5 workers">
 
-    <a class="btn btn-success mb-2" href="<?= route("workers.create") ?>">Criar</a>
+    <div class="buttons">
+        <a class="btn btn-success mb-2" href="<?= route("workers.create") ?>">Criar</a>
+
+        <a class="btn btn-success mb-2" href="<?= route("admins.positions") ?>">Gerenciar cargos</a>
+    </div>
 
     <table class="table table-bordered">
         <thead>
