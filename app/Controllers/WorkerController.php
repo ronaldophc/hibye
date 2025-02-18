@@ -47,4 +47,27 @@ class WorkerController extends Controller
         FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
         $this->redirectTo(route('workers.create'));
     }
+
+    public function edit(Request $request): void
+    {
+        $worker = Worker::findById($request->getParam('id'));
+        if ($worker === null) {
+            FlashMessage::danger('Funcionário não encontrado!');
+            $this->redirectTo(route('workers.admins'));
+            return;
+        }
+        $positions = Position::all();
+        $this->render('admin/workers/edit', compact('worker', 'positions'));
+    }
+
+    public function destroy(Request $request): void
+    {
+        $id = $request->getParam('id');
+
+        $worker = Worker::findById($id);
+        $worker->destroy();
+
+        FlashMessage::success('Funcionário removido com sucesso!');
+        $this->redirectTo(route('workers.workers'));
+    }
 }

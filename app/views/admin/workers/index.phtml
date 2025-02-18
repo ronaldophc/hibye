@@ -35,10 +35,10 @@
                     <td><?= $worker->phone ?></td>
                     <td>
                         <div class="d-flex flex-row">
-                            <a href="<?= route('admins.edit', ['id' => $worker->id]) ?>" class='btn btn-warning btn-sm mx-2'>
+                            <a href="<?= route('workers.edit', ['id' => $worker->id]) ?>" class='btn btn-warning btn-sm mx-2'>
                                 <i class='bi bi-pencil-square'></i> Editar
                             </a>
-                            <form action="<?= route('admins.destroy', ['id' => $worker->id]) ?>" method="POST" class="m-0">
+                            <form action="<?= route('workers.destroy', ['id' => $worker->id]) ?>" method="POST" class="m-0">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class='btn btn-danger btn-sm'>
                                     <i class='bi bi-trash'></i> Excluir
