@@ -41,6 +41,7 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/admins/create', [AdminController::class, 'store'])->name('admins.store');
     Route::get('/admin/workers/create', [WorkerController::class, 'create'])->name('workers.create');
     Route::post('/admin/workers/create', [WorkerController::class, 'store'])->name('workers.store');
+    Route::get('/admin/positions/create', [PositionController::class, 'create'])->name('positions.create');
     Route::post('/admin/positions/create', [PositionController::class, 'store'])->name('positions.store');
 
     // Update

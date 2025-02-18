@@ -42,9 +42,13 @@ a {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 10px;
 }
 
 .back:hover {
-    background-color: #f9f9f9;
+    background-color: #1B263B;
+    color: white;
+}
+
+.button-back {
+    display: flex;
 }
