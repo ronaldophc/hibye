@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Position;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
+use Lib\FlashMessage;
 
 class PositionController extends Controller
 {
@@ -27,6 +28,7 @@ class PositionController extends Controller
         $position = new Position($request->getParams()['position']);
 
         if (!$position->isValid()) {
+            FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
             $errors = $position->errors;
             $_SESSION['errors'] = $errors;
             $this->redirectTo(route('positions.create'));
@@ -34,10 +36,23 @@ class PositionController extends Controller
         }
 
         if ($position->save()) {
-            $this->redirectTo(route('admins.positions'));
+            FlashMessage::success('Cargo criado com sucesso!');
+            $this->redirectTo(route('positions.positions'));
             return;
         }
 
+        FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
         $this->redirectTo(route('positions.create'));
+    }
+
+    public function destroy(Request $request): void
+    {
+        $id = $request->getParam('id');
+
+        $worker = Position::findById($id);
+        $worker->destroy();
+
+        FlashMessage::success('Cargo deletado com sucesso!');
+        $this->redirectTo(route('positions.positions'));
     }
 }

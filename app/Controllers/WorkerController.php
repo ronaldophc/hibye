@@ -40,7 +40,7 @@ class WorkerController extends Controller
 
         if ($worker->save()) {
             FlashMessage::success('Funcionário registrado com sucesso!');
-            $this->redirectTo(route('admins.workers'));
+            $this->redirectTo(route('workers.workers'));
             return;
         }
 
@@ -69,5 +69,39 @@ class WorkerController extends Controller
 
         FlashMessage::success('Funcionário removido com sucesso!');
         $this->redirectTo(route('workers.workers'));
+    }
+
+    public function update(Request $request): void
+    {
+        $worker = Worker::findById($request->getParam('id'));
+        $params = $request->getParams()['worker'];
+
+        if ($worker === null) {
+            FlashMessage::danger('Funcionário não encontrado!');
+            $this->redirectTo(route('workers.workers'));
+            return;
+        }
+
+        $update_params = array_filter($params, fn($value, $key) => $key !== 'password' || $value !== $worker->password, ARRAY_FILTER_USE_BOTH);
+        $worker->setAttributes($update_params);
+
+        if (!$worker->isValidUpdate()) {
+            FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
+            $errors = $worker->errors;
+            $_SESSION['errors'] = $errors;
+            $this->redirectTo(route('workers.edit', ['id' => $worker->id]));
+            return;
+        }
+
+        if ($worker->update($update_params)) {
+            FlashMessage::success('Funcionário atualizado com sucesso!');
+            $this->redirectTo(route('workers.workers'));
+            return;
+        }
+
+        FlashMessage::danger('Dados incompletos! Verifique!');
+        $errors = $worker->errors;
+        $_SESSION['errors'] = $errors;
+        $this->redirectTo(route('workers.edit', ['id' => $worker->id]));
     }
 }

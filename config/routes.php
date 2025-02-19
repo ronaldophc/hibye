@@ -33,7 +33,7 @@ Route::middleware('admin')->group(function () {
     // Retrieve
     Route::get('/admin/admins', [AdminController::class, 'admins'])->name('admins.admins');
     Route::get('/admin/workers', [WorkerController::class, 'workers'])->name('workers.workers');
-    Route::get('/admin/positions', [PositionController::class, 'positions'])->name('admins.positions');
+    Route::get('/admin/positions', [PositionController::class, 'positions'])->name('positions.positions');
     Route::get('/admin/admins/page/{page}', [AdminController::class, 'admins'])->name('admins.paginate');
 
     // Create
@@ -42,13 +42,16 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/workers/create', [WorkerController::class, 'create'])->name('workers.create');
     Route::post('/admin/workers/create', [WorkerController::class, 'store'])->name('workers.store');
     Route::post('/admin/positions/create', [PositionController::class, 'store'])->name('positions.store');
+    Route::get('/admin/positions/create', [PositionController::class, 'create'])->name('positions.create');
 
     // Update
     Route::get('/admin/admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.edit');
     Route::get('/admin/workers/{id}/edit', [WorkerController::class, 'edit'])->name('workers.edit');
     Route::put('/admin/admins/{id}', [AdminController::class, 'update'])->name('admins.update');
+    Route::put('/admin/workers/{id}', [WorkerController::class, 'update'])->name('workers.update');
 
     // Delete
     Route::delete('/admin/admins/delete/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
     Route::delete('/admin/workers/delete/{id}', [WorkerController::class, 'destroy'])->name('workers.destroy');
+    Route::delete('/admin/positions/delete/{id}', [PositionController::class, 'destroy'])->name('positions.destroy');
 });

@@ -23,6 +23,12 @@ class Admin extends Model
         Validations::uniqueness('email', $this);
     }
 
+    public function validatesUpdate(): void
+    {
+        Validations::notEmpty('email', $this);
+        Validations::notEmpty('password', $this);
+    }
+
     public function authenticate(string $password): bool
     {
         if ($this->password == null) {
@@ -32,7 +38,7 @@ class Admin extends Model
         return $password === $this->password;
     }
 
-    public static function findByEmail(string $email): Admin | null
+    public static function findByEmail(string $email)
     {
         return Admin::findBy(['email' => $email]);
     }

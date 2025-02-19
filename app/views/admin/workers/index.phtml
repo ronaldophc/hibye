@@ -7,7 +7,7 @@
     <div class="buttons">
         <a class="btn btn-success mb-2" href="<?= route("workers.create") ?>">Criar</a>
 
-        <a class="btn btn-success mb-2" href="<?= route("admins.positions") ?>">Gerenciar cargos</a>
+        <a class="btn btn-success mb-2" href="<?= route("positions.positions") ?>">Gerenciar cargos</a>
     </div>
 
     <table class="table table-bordered">
@@ -15,6 +15,7 @@
             <tr>
                 <th>Nome</th>
                 <th>CPF</th>
+                <th>Cargo</th>
                 <th>Email</th>
                 <th>Endereço</th>
                 <th>Sexo</th>
@@ -28,9 +29,10 @@
                 <tr>
                     <td><?= $worker->name ?></td>
                     <td><?= $worker->cpf ?></td>
+                    <td><?= $worker->position ? $worker->position->name : '' ?></td>
                     <td><?= $worker->email ?></td>
                     <td><?= $worker->address ?></td>
-                    <td><?= $worker->sex ?></td>
+                    <td><?= $worker->getSexString() ?></td>
                     <td><?= $worker->daily_hours ?></td>
                     <td><?= $worker->phone ?></td>
                     <td>

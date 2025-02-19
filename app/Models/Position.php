@@ -21,4 +21,9 @@ class Position extends Model
         Validations::notEmpty('name', $this);
         Validations::uniqueness('name', $this);
     }
+
+    public function validatesUpdate(): void
+    {
+        Validations::notEmpty('name', $this);
+    }
 }
