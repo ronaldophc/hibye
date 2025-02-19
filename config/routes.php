@@ -35,6 +35,8 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/workers', [WorkerController::class, 'workers'])->name('workers.workers');
     Route::get('/admin/positions', [PositionController::class, 'positions'])->name('positions.positions');
     Route::get('/admin/admins/page/{page}', [AdminController::class, 'admins'])->name('admins.paginate');
+    Route::get('/admin/workers/page/{page}', [WorkerController::class, 'workers'])->name('workers.paginate');
+    Route::get('/admin/positions/page/{page}', [PositionController::class, 'positions'])->name('positions.paginate');
 
     // Create
     Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admins.create');

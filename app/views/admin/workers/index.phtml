@@ -9,56 +9,50 @@
 
         <a class="btn btn-success mb-2" href="<?= route("positions.positions") ?>">Gerenciar cargos</a>
     </div>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Cargo</th>
-                <th>Email</th>
-                <th>Endereço</th>
-                <th>Sexo</th>
-                <th>Carga Horária</th>
-                <th>Telefone</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($workers as $worker) : ?>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td><?= $worker->name ?></td>
-                    <td><?= $worker->cpf ?></td>
-                    <td><?= $worker->position ? $worker->position->name : '' ?></td>
-                    <td><?= $worker->email ?></td>
-                    <td><?= $worker->address ?></td>
-                    <td><?= $worker->getSexString() ?></td>
-                    <td><?= $worker->daily_hours ?></td>
-                    <td><?= $worker->phone ?></td>
-                    <td>
-                        <div class="d-flex flex-row">
-                            <a href="<?= route('workers.edit', ['id' => $worker->id]) ?>" class='btn btn-warning btn-sm mx-2'>
-                                <i class='bi bi-pencil-square'></i> Editar
-                            </a>
-                            <form action="<?= route('workers.destroy', ['id' => $worker->id]) ?>" method="POST" class="m-0">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class='btn btn-danger btn-sm'>
-                                    <i class='bi bi-trash'></i> Excluir
-                                </button>
-                            </form>
-                        </div>
-                    </td>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Cargo</th>
+                    <th>Email</th>
+                    <th>Endereço</th>
+                    <th>Sexo</th>
+                    <th>Carga Horária</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    <!-- Paginação -->
-    <div class="pagination">
-        <a href="#">Anterior</a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">Próximo</a>
+            </thead>
+            <tbody>
+                <?php foreach ($workers as $worker) : ?>
+                    <tr>
+                        <td><?= $worker->name ?></td>
+                        <td><?= $worker->cpf ?></td>
+                        <td><?= $worker->position ? $worker->position->name : '' ?></td>
+                        <td><?= $worker->email ?></td>
+                        <td><?= $worker->address ?></td>
+                        <td><?= $worker->getSexString() ?></td>
+                        <td><?= $worker->daily_hours ?></td>
+                        <td><?= $worker->phone ?></td>
+                        <td>
+                            <div class="d-flex flex-row">
+                                <a href="<?= route('workers.edit', ['id' => $worker->id]) ?>" class='btn btn-warning btn-sm mx-2'>
+                                    <i class='bi bi-pencil-square'></i> Editar
+                                </a>
+                                <form action="<?= route('workers.destroy', ['id' => $worker->id]) ?>" method="POST" class="m-0">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class='btn btn-danger btn-sm'>
+                                        <i class='bi bi-trash'></i> Excluir
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
+
+    <?php $paginator->renderPagesNavigation(); ?>
 </div>
