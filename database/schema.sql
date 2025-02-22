@@ -20,7 +20,7 @@ CREATE TABLE workers
   daily_hours INT NOT NULL,
   phone VARCHAR(20),
   password VARCHAR(255) NOT NULL,
-  position_id INT REFERENCES positions(id) ON DELETE CASCADE
+  position_id INT NOT NULL REFERENCES positions(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS admins;

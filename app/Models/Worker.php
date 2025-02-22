@@ -34,6 +34,7 @@ class Worker extends Model
         Validations::notEmpty('cpf', $this);
         Validations::notEmpty('daily_hours', $this);
         Validations::notEmpty('password', $this);
+        Validations::notEmpty('position_id', $this);
 
         Validations::uniqueness('email', $this);
         Validations::uniqueness('cpf', $this);
@@ -46,6 +47,7 @@ class Worker extends Model
         Validations::notEmpty('cpf', $this);
         Validations::notEmpty('daily_hours', $this);
         Validations::notEmpty('password', $this);
+        Validations::notEmpty('position_id', $this);
     }
 
     public function authenticate(string $password): bool
@@ -77,5 +79,10 @@ class Worker extends Model
     public function getSexString(): string
     {
         return ($this->sex == 'male') ? 'Masculino' : 'Feminino';
+    }
+
+    public function verifyPosition(): bool
+    {
+        return empty($this->position_id);
     }
 }

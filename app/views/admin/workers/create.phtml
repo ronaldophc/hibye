@@ -61,7 +61,6 @@ unset($_SESSION['errors']);
                     <div class="col-12 col-sm-6">
                         <label for="position_id" class="form-label">Cargo</label>
                         <select name="worker[position_id]" class="form-control" id="position_id">
-                            <option value="">Selecione</option>
                             <?php foreach($positions as $position) : ?>
                                 <option value="<?= $position->id ?>"><?= $position->name ?></option>
                             <?php endforeach; ?>

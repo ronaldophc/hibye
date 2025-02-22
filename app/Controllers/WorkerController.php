@@ -82,7 +82,8 @@ class WorkerController extends Controller
             return;
         }
 
-        $update_params = array_filter($params, fn($value, $key) => $key !== 'password' || $value !== $worker->password, ARRAY_FILTER_USE_BOTH);
+        $filterFn = fn($v, $k) => $k !== 'password' || $v !== $worker->password;
+        $update_params = array_filter($params, $filterFn, ARRAY_FILTER_USE_BOTH);
         $worker->setAttributes($update_params);
 
         if (!$worker->isValidUpdate()) {
