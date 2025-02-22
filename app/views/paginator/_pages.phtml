@@ -13,7 +13,7 @@
 
         <?php for ($page = 1; $page <= $paginator->totalOfPages(); $page++) : ?>
         <li class="page-item <?= $paginator->isPage($page) ? 'active' : '' ?>">
-            <a class="page-link" href="<?= route($paginator->getRouteName(), ['page' => $page]) ?>"><?= $page ?></a>
+            <a class="page-link page-number" href="<?= route($paginator->getRouteName(), ['page' => $page]) ?>"><?= $page ?></a>
         </li>
         <?php endfor; ?>
 

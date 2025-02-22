@@ -13,7 +13,7 @@ class WorkersPopulate
       'cpf' => '09631697932',
       'email' => 'fulano@gmail.com',
       'password' => '123',
-      'daily_hours' => 8,
+      'daily_hours' => 8
     ];
 
     $worker = new Worker($data);

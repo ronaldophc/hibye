@@ -34,3 +34,26 @@
 a {
     text-decoration: none;
 }
+
+.back {
+    color: black;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back:hover {
+    background-color: #1B263B;
+    color: white;
+}
+
+.button-back {
+    display: flex;
+}
+
+.page-number {
+    background-color: #198754 !important;
+    border-color: #198754 !important;
+}

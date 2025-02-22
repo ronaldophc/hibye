@@ -1,0 +1,26 @@
+<?php require __DIR__ . '/../navbar.phtml' ?>
+
+<?php $errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+?>
+<div class="text-center mb-5">
+    <h1 class="fs-2 title">Criar Funcionário</h1>
+    <div class="container">
+        <div class="mb-2 button-back">
+            <a href="<?= route("positions.positions") ?>" class="fs-5 back"><i class="bi bi-arrow-left"></i>Voltar</a>
+        </div>
+        <div class="page-create">
+            <form method="POST" action="<?= route("positions.store") ?>" class="mb-4">
+                <input type="hidden" name="id" value="">
+                <div class="mb-3 col-6 col-md-3 mx-auto">
+                    <label for="name" class="form-label">Nome do cargo</label>
+                    <input type="text" name="position[name]" id="name" class="form-control" placeholder="Digite o nome">
+                    <?php if (array_key_exists('name', $errors)): ?>
+                        <div class="text-danger"><?= $errors['name'] ?></div>
+                    <?php endif; ?>
+                </div>
+                <button type="submit" class="btn btn-success">Criar</button>
+            </form>
+        </div>
+    </div>
+</div>

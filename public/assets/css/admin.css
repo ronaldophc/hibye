@@ -1,3 +1,47 @@
 .title {
-  background-color: #778DA9;
+    background-color: #778da9;
+    margin-bottom: 1rem;
+    padding: 1rem 0 1rem 0;
+    font-weight: bold;
 }
+
+.page-create {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #f9f9f9dc;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.page-create .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.page-create .btn-success {
+    width: 80%;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.page-create .btn-success:hover {
+    background-color: #218838;
+}
+
+.workers {
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+

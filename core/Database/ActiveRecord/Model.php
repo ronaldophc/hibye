@@ -109,6 +109,15 @@ abstract class Model
         return empty($this->errors);
     }
 
+    public function isValidUpdate(): bool
+    {
+        $this->errors = [];
+
+        $this->validatesUpdate();
+
+        return empty($this->errors);
+    }
+
     public function newRecord(): bool
     {
         return $this->id === null;
@@ -134,6 +143,8 @@ abstract class Model
     }
 
     public abstract function validates(): void;
+
+    public abstract function validatesUpdate(): void;
 
     /* ------------------- DATABASE METHODS ------------------- */
     public function save(): bool
@@ -302,11 +313,11 @@ abstract class Model
         $attributes = implode(', ', static::$columns);
 
         $sql = <<<SQL
-            SELECT id, {$attributes} FROM {$table} WHERE 
+            SELECT id, {$attributes} FROM {$table} WHERE
         SQL;
 
         $sqlConditions = array_map(function ($column) {
-            return "{$column} = :{$column}";
+            return " {$column} = :{$column}";
         }, array_keys($conditions));
 
         $sql .= implode(' AND ', $sqlConditions);
