@@ -100,6 +100,13 @@ abstract class Model
     }
 
     /* ------------------- VALIDATIONS METHODS ------------------- */
+
+    public function setAttributes(mixed $update_params): void
+    {
+        foreach ($update_params as $key => $value) {
+            $this->$key = $value;
+        }
+    }
     public function isValid(): bool
     {
         $this->errors = [];

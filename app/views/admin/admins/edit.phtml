@@ -1,17 +1,29 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
+<?php $errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+?>
+
 <div class="text-center">
     <h1 class="fs-2 title">Editar Administrador</h1>
-    <div class="col-md-2 mx-auto">
+    <div class="container page-create">
 
-        <form method="POST" action="<?= route('admins.update', ['id' => $admin->id]) ?>" class="mb-4">
+        <form method="POST" action="<?= route('admins.update', ['id' => $admin->id]) ?>" enctype="multipart/form-data" class="mb-4">
             <input type="hidden" name="_method" value="PUT">
-            <div class="mb-3">
+            <img src="<?= $admin->profileImage()->path() ?>" alt="Imagem de Perfil" class="profileImage mb-3">
+            <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" name="email" id="email" class="form-control" placeholder="Digite o email" value="<?= $admin->email ?>" disabled>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="password" class="form-label">Nova Senha</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+                <?php if (array_key_exists('password', $errors)): ?>
+                    <div class="text-danger"><?= $errors['password'] ?></div>
+                <?php endif; ?>
+            </div>
+            <div class="mb-3 col-12 col-sm-6 offset-sm-3">
+                <label for="profile_image" class="form-label">Imagem de Perfil</label>
+                <input type="file" name="profile_image" id="profile_image" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Atualizar</button>
         </form>
