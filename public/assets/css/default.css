@@ -1,4 +1,4 @@
-/* ------------------------------------- Flash Message ------------------------------------- */
+/* ------------------------------------- Flash Message ------------------------------------- /
 .flash-message-container {
     position: fixed;
     bottom: 20px;
@@ -17,18 +17,43 @@
     100% { opacity: 0; }
 }
 
-/* ------------------------------------- Navbar ------------------------------------- */
+/ ------------------------------------- Navbar ------------------------------------- */
 
 .navbar {
-    background-color: #1B263B;
+    background-color: #1b263b;
 }
 
 .navbar .nav-link {
-    color: #E0E1DD;
+    color: #e0e1dd;
 }
 
 .navbar .nav-link:hover {
-    color: #FFC857;
+    color: #ffc857;
+}
+
+.navbar .btn-dropdown {
+    border: none;
+    border-radius: 20%;
+    background-color: transparent;
+    color: white;
+}
+
+.profileImage {
+    max-width: 50px;
+    min-width: 30px;
+}
+
+.navbar .dropdown-menu {
+    background-color: #1b263b;
+    border: 1px black solid;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #111926;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+    color: white;
 }
 
 a {
@@ -45,7 +70,7 @@ a {
 }
 
 .back:hover {
-    background-color: #1B263B;
+    background-color: #1b263b;
     color: white;
 }
 
