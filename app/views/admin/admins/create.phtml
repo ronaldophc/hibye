@@ -1,4 +1,9 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
+<?php
+$errors = $_SESSION['image_error'] ?? '';
+unset($_SESSION['image_error']);
+?>
+<?php dd($errors) ?>
 <div class="text-center mb-5">
     <h1 class="fs-2 title">Criar Administrador</h1>
     <div class="container page-create">
@@ -14,6 +19,9 @@
             <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="profile_image" class="form-label">Imagem de Perfil</label>
                 <input type="file" name="profile_image" id="profile_image" class="form-control">
+                <?php if (!empty($errors)): ?>
+                    <div class="text-danger"><?= $errors ?></div>
+                <?php endif; ?>
             </div>
 
             <button type="submit" class="btn btn-success">Criar</button>

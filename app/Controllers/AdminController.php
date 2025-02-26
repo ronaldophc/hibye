@@ -83,20 +83,26 @@ class AdminController extends Controller
 
         if (!$admin->isValidUpdate()) {
             FlashMessage::danger('Dados incompletos! Verifique!');
-            $errors = $admin->errors;
+            $errors = $admin->getErrors();
             $_SESSION['errors'] = $errors;
             $this->redirectTo(route('admins.edit', ['id' => $id]));
             return;
+        }
+
+        $uploadedFile = $_FILES['profile_image'];
+        if ($uploadedFile) {
+            $profileImage = $admin->profileImage();
+            if (!$profileImage->validate($uploadedFile)) {
+                $_SESSION['image_error'] = $profileImage->getErrors();
+                $this->redirectTo(route('admins.edit', ['id' => $id]));
+            }
+            $admin->profileImage()->update($_FILES['profile_image']);
         }
 
         if ($admin->update(['password' => $password])) {
             FlashMessage::success('Admin atualizado com sucesso!');
         }
 
-        $uploadedFile = $_FILES['profile_image'];
-        if ($uploadedFile) {
-            $admin->profileImage()->update($_FILES['profile_image']);
-        }
         $this->redirectTo(route('admins.admins'));
     }
 

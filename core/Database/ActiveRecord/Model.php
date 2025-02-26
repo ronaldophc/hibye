@@ -15,6 +15,7 @@ use ReflectionMethod;
  */
 abstract class Model
 {
+    public ?string $profile_image = null;
     /** @var array<string, string> */
     protected array $errors = [];
     protected ?int $id = null;
@@ -142,6 +143,14 @@ abstract class Model
         }
 
         return null;
+    }
+
+    /**
+     * @return array<string, string> | null
+     */
+    public function getErrors(): array | null
+    {
+        return $this->errors;
     }
 
     public function addError(string $index, string $value): void

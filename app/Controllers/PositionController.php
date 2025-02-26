@@ -29,8 +29,8 @@ class PositionController extends Controller
 
         if (!$position->isValid()) {
             FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
-            if ($position->errors) {
-                $errors = $position->errors;
+            if ($position->getErrors()) {
+                $errors = $position->getErrors();
                 $_SESSION['errors'] = $errors;
             }
             $this->redirectTo(route('positions.create'));
