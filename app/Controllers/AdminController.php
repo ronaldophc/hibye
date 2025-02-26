@@ -40,7 +40,7 @@ class AdminController extends Controller
 
         $uploadedFile = $_FILES['profile_image'];
 
-        if ($admin->save() && $uploadedFile['error'] == UPLOAD_ERR_OK) {
+        if ($admin->save() && $uploadedFile) {
             FlashMessage::success('Admin registrado com sucesso!');
             $admin->profileImage()->update($uploadedFile);
             $this->redirectTo(route('admins.admins'));
