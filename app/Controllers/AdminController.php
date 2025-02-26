@@ -30,21 +30,21 @@ class AdminController extends Controller
 
     public function store(Request $request): void
     {
-        $password = $request->getParam('password');
-        $email = $request->getParam('email');
+        $admin = new Admin($request->getParams()['admin']);
 
-        if (empty($email) || empty($password)) {
+        if (!$admin->isValid()) {
             FlashMessage::danger('Dados incompletos! Verifique!');
             $this->redirectTo(route('admins.create'));
             return;
         }
 
-        $admin = new Admin();
-        $admin->email = $email;
-        $admin->password = $password;
+        $uploadedFile = $_FILES['profile_image'];
 
         if ($admin->save()) {
             FlashMessage::success('Admin registrado com sucesso!');
+            if ($uploadedFile) {
+                $admin->profileImage()->update($uploadedFile);
+            }
             $this->redirectTo(route('admins.admins'));
             return;
         }
@@ -79,21 +79,25 @@ class AdminController extends Controller
         }
 
         $password = $request->getParam('password');
+        $admin->password = $password;
 
-        if (empty($password)) {
+        if (!$admin->isValidUpdate()) {
             FlashMessage::danger('Dados incompletos! Verifique!');
+            $errors = $admin->errors;
+            $_SESSION['errors'] = $errors;
             $this->redirectTo(route('admins.edit', ['id' => $id]));
             return;
         }
 
         if ($admin->update(['password' => $password])) {
             FlashMessage::success('Admin atualizado com sucesso!');
-            $this->redirectTo(route('admins.admins'));
-            return;
         }
 
-        FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
-        $this->redirectTo(route('admins.edit', ['id' => $id]));
+        $uploadedFile = $_FILES['profile_image'];
+        if ($uploadedFile) {
+            $admin->profileImage()->update($_FILES['profile_image']);
+        }
+        $this->redirectTo(route('admins.admins'));
     }
 
     public function destroy(Request $request): void

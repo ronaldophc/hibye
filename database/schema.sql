@@ -29,7 +29,8 @@ CREATE TABLE admins
 (
   id INT AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(50) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  profile_image VARCHAR(255)
 );
 
 SET foreign_key_checks = 1;

@@ -59,22 +59,11 @@ class Worker extends Model
         return $password === $this->password;
     }
 
-    public static function findByCpf(string $cpf): Worker | null
-    {
-        return Worker::findBy(['cpf' => $cpf]);
-    }
-
     public static function findByEmail(string $email): Worker | null
     {
         return Worker::findBy(['email' => $email]);
     }
 
-    public function setAttributes(mixed $update_params)
-    {
-        foreach ($update_params as $key => $value) {
-            $this->$key = $value;
-        }
-    }
 
     public function getSexString(): string
     {
