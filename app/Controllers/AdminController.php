@@ -89,12 +89,13 @@ class AdminController extends Controller
 
         if ($admin->update(['password' => $password])) {
             FlashMessage::success('Admin atualizado com sucesso!');
-            $uploadedFile = $_FILES['profile_image'];
-            if ($uploadedFile) {
-                $admin->profileImage()->update($_FILES['profile_image']);
-            }
-            $this->redirectTo(route('admins.admins'));
         }
+
+        $uploadedFile = $_FILES['profile_image'];
+        if ($uploadedFile) {
+            $admin->profileImage()->update($_FILES['profile_image']);
+        }
+        $this->redirectTo(route('admins.admins'));
     }
 
     public function destroy(Request $request): void
