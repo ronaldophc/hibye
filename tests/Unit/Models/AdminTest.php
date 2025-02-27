@@ -48,7 +48,7 @@ class AdminTest extends TestCase
         $this->assertFalse($user->save());
         $this->assertFalse($user->hasErrors());
 
-        $this->assertEquals('não pode ser vazio!', $user->errors('email'));
+        $this->assertEquals('Não pode ser vazio!', $user->errors('email'));
     }
 
     // TESTE ATUALIZAÇÃO COM SUCESSO

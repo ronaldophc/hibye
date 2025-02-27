@@ -1,4 +1,11 @@
 <?php require __DIR__ . '/../navbar.phtml' ?>
+<?php
+$errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+$image_error = $_SESSION['image_error'] ?? '';
+unset($_SESSION['image_error']);
+?>
+
 <div class="text-center mb-5">
     <h1 class="fs-2 title">Criar Administrador</h1>
     <div class="container page-create">
@@ -6,6 +13,9 @@
             <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" name="admin[email]" id="email" class="form-control" placeholder="Digite o email">
+                <?php if (array_key_exists('email', $errors)): ?>
+                    <div class="text-danger"><?= $errors['email'] ?></div>
+                <?php endif; ?>
             </div>
             <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="password" class="form-label">Senha</label>
@@ -14,6 +24,9 @@
             <div class="mb-3 col-12 col-sm-6 offset-sm-3">
                 <label for="profile_image" class="form-label">Imagem de Perfil</label>
                 <input type="file" name="profile_image" id="profile_image" class="form-control">
+                <?php if (!empty($image_error)): ?>
+                    <div class="text-danger"><?= $image_error ?></div>
+                <?php endif; ?>
             </div>
 
             <button type="submit" class="btn btn-success">Criar</button>

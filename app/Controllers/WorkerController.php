@@ -32,7 +32,7 @@ class WorkerController extends Controller
 
         if (!$worker->isValid()) {
             FlashMessage::danger('Dados incompletos! Verifique!');
-            $errors = $worker->errors;
+            $errors = $worker->getErrors();
             $_SESSION['errors'] = $errors;
             $this->redirectTo(route('workers.create'));
             return;
@@ -88,7 +88,7 @@ class WorkerController extends Controller
 
         if (!$worker->isValidUpdate()) {
             FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
-            $errors = $worker->errors;
+            $errors = $worker->getErrors();
             $_SESSION['errors'] = $errors;
             $this->redirectTo(route('workers.edit', ['id' => $worker->id]));
             return;
@@ -101,7 +101,7 @@ class WorkerController extends Controller
         }
 
         FlashMessage::danger('Dados incompletos! Verifique!');
-        $errors = $worker->errors;
+        $errors = $worker->getErrors();
         $_SESSION['errors'] = $errors;
         $this->redirectTo(route('workers.edit', ['id' => $worker->id]));
     }

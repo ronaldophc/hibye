@@ -11,7 +11,6 @@ use Core\Database\ActiveRecord\Model;
  * @property int $id
  * @property string $email
  * @property string $password
- * @property string $profile_image
  */
 class Admin extends Model
 {
@@ -49,5 +48,4 @@ class Admin extends Model
     {
         return new ProfileImage($this);
     }
-
 }

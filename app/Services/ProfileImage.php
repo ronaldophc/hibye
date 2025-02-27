@@ -11,6 +11,17 @@ class ProfileImage
     /** @var array<string, mixed> $image */
     private array $image;
 
+    /**
+     * @var string[] Array de extensões permitidas
+     */
+    protected array $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    protected int $maxFileSize = 5000000;
+
+    /**
+     * @var array<int, string> Array indexado com mensagens de erro
+     */
+    protected array $errors = [];
+
     public function __construct(
         private readonly Model $model
     ) {
@@ -97,5 +108,35 @@ class ProfileImage
     private function getAbsoluteSavedFilePath(): string
     {
         return Constants::rootPath()->join('public' . $this->baseDir())->join($this->model->profile_image);
+    }
+
+    public function getErrors(): string
+    {
+        return implode(', ', $this->errors);
+    }
+
+    /**
+     * Valida uma imagem de upload.
+     *
+     * @param array{name: string, tmp_name: string, size: int, error: int} $image Dados do arquivo $_FILES
+     * @return bool Retorna true se a validação passar
+     */
+
+    public function validate(array $image): bool
+    {
+        $fileExtension = pathinfo($image['name'], PATHINFO_EXTENSION);
+        if (!in_array(strtolower($fileExtension), $this->allowedExtensions, true)) {
+            $this->errors[] = 'Extensão de arquivo inválida! Utilize uma das seguintes extensões: '
+            . implode(', ', $this->allowedExtensions) . '.';
+            return false;
+        }
+
+        if ($image['size'] > $this->maxFileSize || $image['size'] === 0) {
+            $this->errors[] = 'O arquivo excede o tamanho máximo permitido de '
+            . ($this->maxFileSize / 1000000) . ' MB.';
+            return false;
+        }
+
+        return true;
     }
 }

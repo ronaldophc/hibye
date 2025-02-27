@@ -20,7 +20,17 @@ use Core\Database\ActiveRecord\Model;
 class Worker extends Model
 {
     protected static string $table = 'workers';
-    protected static array $columns = ['name', 'email', 'cpf', 'password', 'address', 'sex', 'daily_hours', 'phone', 'position_id'];
+    protected static array $columns = [
+        'name',
+        'email',
+        'cpf',
+        'password',
+        'address',
+        'sex',
+        'daily_hours',
+        'phone',
+        'position_id'
+    ];
 
     public function position(): BelongsTo | null
     {
