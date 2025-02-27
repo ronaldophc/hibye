@@ -34,16 +34,26 @@ class AdminController extends Controller
 
         if (!$admin->isValid()) {
             FlashMessage::danger('Dados incompletos! Verifique!');
+            $errors = $admin->getErrors();
+            $_SESSION['errors'] = $errors;
             $this->redirectTo(route('admins.create'));
             return;
         }
 
         $uploadedFile = $_FILES['profile_image'];
 
+        if (!empty($uploadedFile['name'])) {
+            $profileImage = $admin->profileImage();
+            if (!$profileImage->validate($uploadedFile)) {
+                $_SESSION['image_error'] = $profileImage->getErrors();
+                $this->redirectTo(route('admins.create'));
+            }
+        }
+
         if ($admin->save()) {
             FlashMessage::success('Admin registrado com sucesso!');
             if ($uploadedFile) {
-                $admin->profileImage()->update($uploadedFile);
+                $admin->profileImage()->update($_FILES['profile_image']);
             }
             $this->redirectTo(route('admins.admins'));
             return;
@@ -90,7 +100,8 @@ class AdminController extends Controller
         }
 
         $uploadedFile = $_FILES['profile_image'];
-        if ($uploadedFile) {
+
+        if (!empty($uploadedFile['name'])) {
             $profileImage = $admin->profileImage();
             if (!$profileImage->validate($uploadedFile)) {
                 $_SESSION['image_error'] = $profileImage->getErrors();

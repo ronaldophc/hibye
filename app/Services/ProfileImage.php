@@ -126,12 +126,14 @@ class ProfileImage
     {
         $fileExtension = pathinfo($image['name'], PATHINFO_EXTENSION);
         if (!in_array(strtolower($fileExtension), $this->allowedExtensions, true)) {
-            $this->errors[] = 'Extensão de arquivo inválida! Utilize uma das seguintes extensões: ' . implode(', ', $this->allowedExtensions) . '.';
+            $this->errors[] = 'Extensão de arquivo inválida! Utilize uma das seguintes extensões: '
+            . implode(', ', $this->allowedExtensions) . '.';
             return false;
         }
 
         if ($image['size'] > $this->maxFileSize || $image['size'] === 0) {
-            $this->errors[] = 'O arquivo excede o tamanho máximo permitido de ' . ($this->maxFileSize / 1000000) . ' MB.';
+            $this->errors[] = 'O arquivo excede o tamanho máximo permitido de '
+            . ($this->maxFileSize / 1000000) . ' MB.';
             return false;
         }
 
